@@ -28,10 +28,10 @@ class ThaiIdCard {
   final String lastName;
 
   final String address;
-  final String moo;
-  final String soi;
-  final String road;
-  final String address4;
+  // final String moo;
+  // final String soi;
+  // final String road;
+  // final String address4;
   final String tambon;
   final String amphoe;
   final String province;
@@ -51,10 +51,10 @@ class ThaiIdCard {
     this.firstName = '',
     this.lastName = '',
     this.address = '',
-    this.moo = '',
-    this.soi = '',
-    this.road = '',
-    this.address4 = '',
+    // this.moo = '',
+    // this.soi = '',
+    // this.road = '',
+    // this.address4 = '',
     this.tambon = '',
     this.amphoe = '',
     this.province = '',
@@ -259,24 +259,32 @@ class _MyHomePageState extends State<MyHomePage> {
       // แยกที่อยู่
       List<String> addressParts =
           addressrew?.split(' ').map((s) => s.trim()).toList() ?? [];
-      String address = addressParts.isNotEmpty ? addressParts[0] : '';
-      String moo = addressParts.length > 1 ? addressParts[1] : '';
-      String road = addressParts.length > 2 ? addressParts[2] : '';
-      String soi = addressParts.length > 3 ? addressParts[3] : '';
-      String address4 = addressParts.length > 4 ? addressParts[4] : '';
-      String tambon = addressParts.length > 5 ? addressParts[5] : '';
-      String amphoe = addressParts.length > 6 ? addressParts[6] : '';
-      String province = addressParts.length > 7 ? addressParts[7] : '';
-
-      if (addressParts.length > 8) {
-        moo = addressParts.length > 2 ? addressParts[2] : '';
-        road = addressParts.length > 3 ? addressParts[3] : '';
-        soi = addressParts.length > 4 ? addressParts[4] : '';
-        address4 = addressParts.length > 5 ? addressParts[5] : '';
-        tambon = addressParts.length > 6 ? addressParts[6] : '';
-        amphoe = addressParts.length > 7 ? addressParts[7] : '';
-        province = addressParts.length > 8 ? addressParts[8] : '';
-      }
+      var sublist = addressParts
+          .sublist(0, addressParts.length - 3)
+          .where((e) => e.trim().isNotEmpty)
+          .join(' ');
+      var sublist3 = addressParts.sublist(addressParts.length - 3);
+      String address = sublist;
+      String tambon = sublist3.length > 0 ? sublist3[0] : '';
+      String amphoe = sublist3.length > 1 ? sublist3[1] : '';
+      String province = sublist3.length > 2 ? sublist3[2] : '';
+      // String address = addressParts.isNotEmpty ? addressParts[0] : '';
+      // String moo = addressParts.length > 1 ? addressParts[1] : '';
+      // String road = addressParts.length > 2 ? addressParts[2] : '';
+      // String soi = addressParts.length > 3 ? addressParts[3] : '';
+      // String address4 = addressParts.length > 4 ? addressParts[4] : '';
+      // String tambon = addressParts.length > 5 ? addressParts[5] : '';
+      // String amphoe = addressParts.length > 6 ? addressParts[6] : '';
+      // String province = addressParts.length > 7 ? addressParts[7] : '';
+      // if (addressParts.length > 8) {
+      //   moo = addressParts.length > 2 ? addressParts[2] : '';
+      //   road = addressParts.length > 3 ? addressParts[3] : '';
+      //   soi = addressParts.length > 4 ? addressParts[4] : '';
+      //   address4 = addressParts.length > 5 ? addressParts[5] : '';
+      //   tambon = addressParts.length > 6 ? addressParts[6] : '';
+      //   amphoe = addressParts.length > 7 ? addressParts[7] : '';
+      //   province = addressParts.length > 8 ? addressParts[8] : '';
+      // }
 
       // แปลงข้อมูลให้อยู่ในรูปแบบที่อ่านง่าย
       final gender =
@@ -302,10 +310,10 @@ class _MyHomePageState extends State<MyHomePage> {
           firstName: firstName,
           lastName: lastName,
           address: address,
-          moo: moo,
-          soi: soi,
-          road: road,
-          address4: address4,
+          // moo: moo,
+          // soi: soi,
+          // road: road,
+          // address4: address4,
           tambon: tambon,
           amphoe: amphoe,
           province: province,
@@ -680,10 +688,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                 // 'addressrew': _idCardData!.addressrew,
                                 // 'gender': _idCardData!.gender,
                                 'address': _idCardData!.address,
-                                'moo': _idCardData!.moo,
-                                'soi': _idCardData!.soi,
-                                'road': _idCardData!.road,
-                                'address4': _idCardData!.address4,
+                                // 'moo': _idCardData!.moo,
+                                // 'soi': _idCardData!.soi,
+                                // 'road': _idCardData!.road,
+                                // 'address4': _idCardData!.address4,
                                 'tambon': _idCardData!.tambon,
                                 'amphoe': _idCardData!.amphoe,
                                 'province': _idCardData!.province,
