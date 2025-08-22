@@ -319,7 +319,9 @@ class _MyHomePageState extends State<MyHomePage> {
         try {
           await card.disconnect().timeout(const Duration(seconds: 0));
           _card = null;
-          page = 0;
+          setState(() {
+            page = 0;
+          });
         } catch (e) {}
       }
       setState(() {
@@ -352,7 +354,13 @@ class _MyHomePageState extends State<MyHomePage> {
             content: Text(message),
             actions: [
               TextButton(
-                onPressed: () => Navigator.of(context).pop(),
+                onPressed:
+                    () => {
+                      Navigator.of(context).pop(),
+                      setState(() {
+                        page = 0;
+                      }),
+                    },
                 child: const Text('ตกลง'),
               ),
             ],
